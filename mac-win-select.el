@@ -1,5 +1,4 @@
 
-
 (defun mac-win-select ()
   "Next version of this function that attempts to use better keybindings
 and add more contingencies for issues that have come up outside of my
@@ -44,6 +43,8 @@ standard window setup."
       (select-window (car (window-at-side-list nil 'left)))))
     (message "")
     ))
+
+(global-set-key (kbd "C-'") 'mac-win-select)
 
 
 
