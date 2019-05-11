@@ -1,3 +1,4 @@
+;; my function for selecting windows ala 'avy-window'
 
 (defun mac-win-select ()
   "Next version of this function that attempts to use better keybindings
@@ -8,8 +9,11 @@ standard window setup."
     ;; start here for ease of use
     (select-window (car (window-at-side-list nil 'left)))
 
-    (setq choice (read-key-sequence
-                  "[f]--topleft, [j]--topright, [TAB]--R, [r]--RE-Builder, [m]--minibuffer, [o]--other"))
+    (setq choice
+          (format "%s" (key-description
+                        (read-key-sequence
+                         "[f]--topleft, [j]--topright, [TAB]--R, [r]--RE-Builder, [m]--minibuffer, [o]--other"))))
+
     (cond
      ((string= choice "f")
       (select-window (car (window-at-side-list nil 'left))))
@@ -19,7 +23,8 @@ standard window setup."
       (select-window (car (window-at-side-list nil 'right))))
 
      ;; R, typically
-     ((string= (key-description (format "%s" choice)) "TAB")
+     ((or (string= choice "TAB")
+          (string= choice "<tab>"))
       (select-window (car (reverse (window-at-side-list nil 'left)))))
 
      ;; RE_builder, typically
@@ -46,6 +51,10 @@ standard window setup."
 
 (global-set-key (kbd "C-'") 'mac-win-select)
 
+
+(string=
+(format "%s" (key-description (read-key-sequence "is")))
+(key-description (read-key-sequence "now is"))) ;; -> t
 
 
 
