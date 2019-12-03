@@ -52,9 +52,8 @@ standard window setup."
 (global-set-key (kbd "C-'") 'mac-win-select)
 
 
-(string=
-(format "%s" (key-description (read-key-sequence "is")))
-(key-description (read-key-sequence "now is"))) ;; -> t
+
+
 
 
 
