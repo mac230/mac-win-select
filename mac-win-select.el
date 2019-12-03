@@ -50,13 +50,3 @@ standard window setup."
     ))
 
 (global-set-key (kbd "C-'") 'mac-win-select)
-
-
-
-
-
-
-
-
-
-
